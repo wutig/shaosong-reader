@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f1ece2">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data: blob:; connect-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>山河阅卷 · PDF 阅读器</title>
+  <link rel="icon" type="image/png" href="/assets/assets/icons/app-icon-192.png">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/poetry.css">
+  <link rel="stylesheet" href="/assets/apple-design.css">
+  <link rel="stylesheet" href="/assets/navigation.css">
+  <link rel="stylesheet" href="/assets/theme.css">
+  <link rel="stylesheet" href="/assets/hero.css">
+  <link rel="stylesheet" href="/assets/reader-theme.css">
+  <link rel="stylesheet" href="/assets/pdf-reader.css">
+  <link rel="stylesheet" href="/assets/local-theme.css">
+  <script defer src="/assets/poetry.js"></script>
+  <script type="module" src="/assets/pdf-reader.js"></script>
+</head>
+<body data-view="home" data-edition="pdf">
+  <header class="topbar">
+    <a class="brand" href="#home" id="pdf-brand" aria-label="山河阅卷首页"><span class="brand-symbol" aria-hidden="true">阅</span><span class="brand-copy">山河阅卷<small id="brand-quote" class="quote-line">千里稻花应秀色</small></span></a>
+    <div class="top-actions">
+      <button id="home-fullscreen-button" class="button button-quiet" type="button" aria-pressed="false">首页全屏</button>
+      <button id="pdf-open-toolbar" class="button button-outline" type="button" hidden>打开 PDF</button>
+    </div>
+  </header>
+
+  <main id="home-view" class="home-view hero-home" tabindex="-1" aria-label="山河阅卷 PDF 阅读器">
+    <div class="hero-art" aria-hidden="true">
+      <img class="hero-scene" src="/assets/assets/shaosong/hero-scene.png" alt="" fetchpriority="high">
+      <div class="hero-paper-wash"></div>
+      <div class="hero-marquee-wrap"><div id="hero-marquee" class="hero-marquee"></div></div>
+      <img class="hero-figure" src="/assets/assets/shaosong/hero-figure.png" alt="" fetchpriority="high">
+      <div class="hero-grain"></div>
+    </div>
+    <div class="hero-bottom"><div class="hero-entry">
+      <button id="pdf-open" class="hero-course-button" type="button">打开 PDF</button>
+    </div></div>
+    <div class="hero-baseline">
+      <button id="hero-motion-toggle" class="hero-motion-toggle" type="button" aria-pressed="false">暂停诗词</button>
+    </div>
+  </main>
+
+  <main id="pdf-reader" class="pdf-reader" aria-label="PDF 阅读" hidden>
+    <div class="pdf-chrome">
+      <div class="pdf-title-row">
+        <button id="pdf-close" class="button button-quiet" type="button">← 首页</button>
+        <h1 id="pdf-title"></h1>
+        <button id="pdf-fullscreen" class="button button-outline" type="button" aria-pressed="false">全屏阅读</button>
+      </div>
+      <div class="pdf-tools" aria-label="阅读工具" role="group">
+        <div class="pdf-tool-group" role="group" aria-label="翻页">
+          <button id="pdf-prev" class="button button-quiet pdf-icon" type="button" aria-label="上一页" title="上一页">‹</button>
+          <input id="pdf-page" type="number" min="1" value="1" inputmode="numeric" aria-label="页码">
+          <span class="pdf-page-total">/ <span id="pdf-page-count">1</span></span>
+          <button id="pdf-next" class="button button-quiet pdf-icon" type="button" aria-label="下一页" title="下一页">›</button>
+        </div>
+        <div class="pdf-tool-group" role="group" aria-label="缩放">
+          <button id="pdf-zoom-out" class="button button-quiet pdf-icon" type="button" aria-label="缩小" title="缩小">−</button>
+          <select id="pdf-zoom" aria-label="缩放比例">
+            <option value="width">适合宽度</option>
+            <option value="page">整页</option>
+            <option value="0.5">50%</option>
+            <option value="0.75">75%</option>
+            <option value="1">100%</option>
+            <option value="1.25">125%</option>
+            <option value="1.5">150%</option>
+            <option value="2">200%</option>
+            <option value="3">300%</option>
+            <option value="4">400%</option>
+            <option value="custom" hidden></option>
+          </select>
+          <button id="pdf-zoom-in" class="button button-quiet pdf-icon" type="button" aria-label="放大" title="放大">+</button>
+        </div>
+      </div>
+    </div>
+    <section id="pdf-viewport" class="pdf-viewport" tabindex="0" aria-label="文档页面">
+      <div id="pdf-pages" class="pdf-pages"></div>
+    </section>
+  </main>
+
+  <input id="pdf-file" type="file" accept="application/pdf,.pdf" hidden>
+  <p id="pdf-loading" class="pdf-notice" role="status" hidden>正在打开 PDF…</p>
+  <div id="pdf-error" class="pdf-notice pdf-error" hidden><p role="alert"></p><button class="button button-quiet" type="button" aria-label="关闭提示">×</button></div>
+  <dialog id="pdf-password-dialog" class="pdf-password-dialog" aria-labelledby="pdf-password-title">
+    <form id="pdf-password-form">
+      <h2 id="pdf-password-title">输入 PDF 密码</h2>
+      <p id="pdf-password-error" role="alert" hidden>密码不正确，请重试。</p>
+      <input id="pdf-password" type="password" aria-label="PDF 密码" autocomplete="off" required>
+      <div>
+        <button id="pdf-password-cancel" class="button button-quiet" type="button">取消</button>
+        <button class="button button-primary" type="submit">打开</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

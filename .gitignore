@@ -1,0 +1,17 @@
+/.runtime/
+/.history/
+/.private/
+/.venv/
+/content/*
+!/content/.gitkeep
+/我的复习记录/
+/恢复冲突/
+/web/assets/local/
+/web/campaign.local.json
+__pycache__/
+*.py[cod]
+*.log
+*.zip
+.env*
+.DS_Store
+Thumbs.db

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "sample-math",
+  "title": "数学演示课",
+  "subtitle": "三道原创示例 · 原图与解析",
+  "scope": "用于演示本地题库导入、逐题记录和山河复归。",
+  "pdf_url": "/content/sample-math/worksheet.pdf",
+  "questions": [
+    {
+      "id": "Q001",
+      "number": 1,
+      "title": "分数相加",
+      "topic": "数与运算",
+      "question": "计算 $\\frac{1}{3}+\\frac{1}{6}$，并将结果化成最简分数。",
+      "answer": "先通分，$\\frac{1}{3}=\\frac{2}{6}$。因此 $\\frac{2}{6}+\\frac{1}{6}=\\frac{3}{6}=\\boxed{\\frac{1}{2}}$。",
+      "confidence": "确定",
+      "source_pages": [1],
+      "notes": [],
+      "followups": [
+        {
+          "kind": "复习提示",
+          "question": "为什么要先通分？",
+          "answer": "分数相加时，分母表示把整体分成多少等份。通分让两项以同样大小的份为单位，就可以把分子相加。"
+        }
+      ]
+    },
+    {
+      "id": "Q002",
+      "number": 2,
+      "title": "长方形的面积",
+      "topic": "平面几何",
+      "question": "一块长方形纸片长 $8\\,\\mathrm{cm}$、宽 $3\\,\\mathrm{cm}$。它的面积是多少？",
+      "answer": "长方形面积等于长乘宽。因此 $S=8\\times3=\\boxed{24\\,\\mathrm{cm}^2}$。面积单位要写成平方厘米。",
+      "confidence": "确定",
+      "source_pages": [2],
+      "notes": [],
+      "followups": []
+    },
+    {
+      "id": "Q003",
+      "number": 3,
+      "title": "给定公差的数列",
+      "topic": "规律与数列",
+      "question": "一个数列的首项为 $4$，每一项比前一项大 $3$。第 $5$ 项是多少？",
+      "answer": "从第 $1$ 项到第 $5$ 项共增加 $4$ 次。第 $5$ 项是 $4+4\\times3=\\boxed{16}$。也可依次列出 $4,7,10,13,16$ 核对。",
+      "confidence": "确定",
+      "source_pages": [3],
+      "notes": [],
+      "followups": []
+    }
+  ],
+  "sources": [
+    {
+      "page": 1,
+      "title": "示例第 1 页",
+      "text": "分数相加",
+      "images": [
+        {"url": "/content/sample-math/images/p01.png", "width": 1000, "height": 600, "rotation": 0}
+      ]
+    },
+    {
+      "page": 2,
+      "title": "示例第 2 页",
+      "text": "长方形的面积",
+      "images": [
+        {"url": "/content/sample-math/images/p02.png", "width": 1000, "height": 600, "rotation": 0}
+      ]
+    },
+    {
+      "page": 3,
+      "title": "示例第 3 页",
+      "text": "给定公差的数列",
+      "images": [
+        {"url": "/content/sample-math/images/p03.png", "width": 1000, "height": 600, "rotation": 0}
+      ]
+    }
+  ]
+}
