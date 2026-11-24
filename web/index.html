@@ -4,7 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f1ece2">
+  <script>if (location.protocol === 'file:') document.documentElement.classList.add('file-entry');</script>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data: blob:; connect-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <style>
+    html.file-entry body { display: grid; min-height: 100vh; place-items: center; margin: 0; background: #f1ece2; color: #302923; font: 16px/1.7 system-ui, sans-serif; }
+    html.file-entry body > :not(#file-launch) { display: none !important; }
+    html.file-entry #file-launch { display: block; box-sizing: border-box; max-width: 32rem; width: calc(100% - 2rem); padding: 1.75rem; border: 1px solid #b5a794; background: #faf5eb; }
+    #file-launch h1 { margin: 0; font-size: 1.45rem; }
+    #file-launch .file-action { display: inline-block; padding: .44em 1em; background: #9c302c; color: white; text-decoration: none; }
+  </style>
   <title>山河阅卷 · PDF 阅读器</title>
   <link rel="icon" type="image/png" href="/assets/assets/icons/app-icon-192.png">
   <link rel="stylesheet" href="/assets/styles.css">
@@ -20,6 +28,11 @@
   <script type="module" src="/assets/pdf-reader.js"></script>
 </head>
 <body data-view="home" data-edition="pdf">
+  <main id="file-launch" hidden>
+    <h1>山河阅卷</h1>
+    <p>这一页是本地文件。可以直接打开在线阅读器，也可以在项目根目录运行 <code>python server.py</code> 后访问 <a href="http://127.0.0.1:8765/">本地阅读器</a>。</p>
+    <a class="file-action" href="https://wutig.github.io/shaosong-reader/">打开在线阅读器</a>
+  </main>
   <header class="topbar">
     <a class="brand" href="#home" id="pdf-brand" aria-label="山河阅卷首页"><span class="brand-symbol" aria-hidden="true">阅</span><span class="brand-copy">山河阅卷<small id="brand-quote" class="quote-line">千里稻花应秀色</small></span></a>
     <div class="top-actions">

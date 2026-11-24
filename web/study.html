@@ -7,6 +7,14 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="复习中心">
+  <script>if (location.protocol === 'file:') document.documentElement.classList.add('file-entry');</script>
+  <style>
+    html.file-entry body { display: grid; min-height: 100vh; place-items: center; margin: 0; background: #f1ece2; color: #302923; font: 16px/1.7 system-ui, sans-serif; }
+    html.file-entry body > :not(#file-launch) { display: none !important; }
+    html.file-entry #file-launch { display: block; box-sizing: border-box; max-width: 32rem; width: calc(100% - 2rem); padding: 1.75rem; border: 1px solid #b5a794; background: #faf5eb; }
+    #file-launch h1 { margin: 0; font-size: 1.45rem; }
+    #file-launch .file-action { display: inline-block; padding: .44em 1em; background: #9c302c; color: white; text-decoration: none; }
+  </style>
   <title>复习中心</title>
   <link rel="stylesheet" href="/vendor/katex/katex.min.css">
   <link rel="stylesheet" href="/assets/styles.css">
@@ -34,6 +42,11 @@
   <script defer src="/assets/mobile.js"></script>
 </head>
 <body data-view="home">
+  <main id="file-launch" hidden>
+    <h1>需要先启动题库服务</h1>
+    <p>在项目根目录运行 <code>python server.py --study</code>，再打开本机复习中心。通过题库服务可加载原图、解析和笔记。</p>
+    <a class="file-action" href="http://127.0.0.1:8765/">打开本机复习中心</a>
+  </main>
   <header class="topbar">
     <a class="brand" href="#/" aria-label="复习中心首页"><span class="brand-symbol" aria-hidden="true">阅</span><span class="brand-copy">复习中心<small id="brand-quote" class="quote-line" title="岳飞《满江红·写怀》；悬停可查看出处">莫等闲，白了少年头，空悲切！</small></span></a>
     <div class="top-actions">
