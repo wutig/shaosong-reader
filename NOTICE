@@ -1,0 +1,15 @@
+项目代码按 LICENSE 中的 MIT 许可分发。以下第三方内容保留各自的条款。
+
+- PDF.js 来自 Mozilla，Apache License 2.0。参见 vendor/pdfjs/LICENSE，以及同目录 CMap、标准字体中各自附带的许可。
+  https://github.com/mozilla/pdf.js
+- KaTeX，MIT。参见 vendor/katex/LICENSE。
+  https://github.com/KaTeX/KaTeX
+- Marked，MIT。参见 vendor/marked/LICENSE.md。
+  https://github.com/markedjs/marked
+- Ma Shan Zheng，SIL Open Font License 1.1。参见 web/assets/fonts/MaShanZheng-OFL.txt。
+  https://github.com/googlefonts/mashanzheng
+- 复习地图使用 Natural Earth 的公有领域地形数据。示意分区由本项目生成。Made with Natural Earth.
+  https://www.naturalearthdata.com/about/terms-of-use/
+- 古典诗词为历史作品。诗词条目和军报保留作者、篇名、出处及必要的归属说明。
+
+公开版封面使用为本项目新生成的红袍人物和宋式书斋插画，图片可随本项目分发。目录 examples/sample-course 内 PDF、原图和题目均为本项目制作的演示内容。
